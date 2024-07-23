@@ -1,0 +1,25 @@
+class Solution {
+    public String mergeAlternately(String word1, String word2) {
+        StringBuilder newstr = new StringBuilder();
+        int n1 = word1.length();
+        int n2 = word2.length();
+        int i = 0, j = 0;
+
+        while (i < n1 && j < n2) {
+            newstr.append(word1.charAt(i++));
+            newstr.append(word2.charAt(j++));
+        }
+
+        // Append remaining characters from word1
+        while (i < n1) {
+            newstr.append(word1.charAt(i++));
+        }
+
+        // Append remaining characters from word2
+        while (j < n2) {
+            newstr.append(word2.charAt(j++));
+        }
+
+        return newstr.toString();
+    }
+}
