@@ -1,27 +1,32 @@
-import java.util.*;
 class Solution {
     public boolean isPalindrome(String s) {
-        s=s.toLowerCase();
-        StringBuilder hey = new StringBuilder();
-        for(char c :s.toCharArray())
+        if(s.isEmpty())
         {
-            if(Character.isLetterOrDigit(c))
-            {
-                hey.append(c);
-            }
-           
+            return true;
         }
-         String rev = hey.toString();
-        int left=0;
-        int right=rev.length()-1;
-        while(left<right)
+        int start=0;
+        int last=s.length()-1;
+        while(start<last)
         {
-            if(rev.charAt(left)!=rev.charAt(right))
+            char ch1=s.charAt(start);
+            char ch2= s.charAt(last);
+            if(!Character.isLetterOrDigit(ch1))
+            {
+                start++;
+            }
+            else if(!Character.isLetterOrDigit(ch2))
+            {
+                last--;
+            }
+            else
+            {
+            if(Character.toLowerCase(ch1)!=Character.toLowerCase(ch2))
             {
                 return false;
             }
-            left++;
-            right--;
+            start++;
+            last--;
+            }
         }
         return true;
     }
